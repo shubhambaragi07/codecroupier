@@ -1,0 +1,101 @@
+/*
+  CodeCroupier / C-Chip — "Black Diamond Protocol" theme tokens
+  Source: 1.Master_Theme_Black_Diamond_Reserve_v1.txt
+*/
+
+:root {
+  /* Brand reds */
+  --cc-red: #D72638;
+  --cc-red-deep: #A20821;
+  --cc-red-neon: #FF2E55;
+
+  /* Backgrounds */
+  --cc-bg-primary: #000000;
+  --cc-bg-coal: #0A0A0A;
+  --cc-bg-panel: #111111;
+
+  /* Card surfaces */
+  --cc-card-bg: rgba(255, 255, 255, 0.03);
+  --cc-card-border: #1C1C1C;
+
+  /* Metallics */
+  --cc-silver: #CCCCCC;
+  --cc-silver-light: #E0E0E0;
+  --cc-silver-border: #7A7A7A;
+  --cc-graphite: #2A2A2A;
+
+  /* Neon accents */
+  --cc-purple: #9A00FF;
+  --cc-cyan: #00E8FF;
+
+  /* Win / success states */
+  --cc-green: #00C57E;
+  --cc-jackpot: #00FFB3;
+  --cc-zero-green: #00FF6A;
+
+  /* Typography */
+  --cc-font-heading: "Montserrat", sans-serif;
+  --cc-font-body: "Inter", sans-serif;
+  --cc-font-mono: "JetBrains Mono", "Roboto Mono", monospace;
+
+  /* Radii */
+  --cc-radius-card: 14px;
+  --cc-radius-control: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--cc-bg-primary);
+  color: var(--cc-silver-light);
+  font-family: var(--cc-font-body);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  /* Signature ambient gradient wash — subtle red/purple glow bleeding
+     in from the top corners of the felt-black backdrop. */
+  background:
+    radial-gradient(900px 480px at 12% -8%, rgba(215, 38, 56, 0.10), transparent 60%),
+    radial-gradient(900px 480px at 92% -6%, rgba(154, 0, 255, 0.09), transparent 60%),
+    var(--cc-bg-primary);
+  background-attachment: fixed, fixed, fixed;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.cc-root {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  color: var(--cc-silver-light);
+  font-family: var(--cc-font-body);
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
