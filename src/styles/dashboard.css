@@ -13,12 +13,12 @@
   padding: 14px clamp(16px, 4vw, 28px);
   background: linear-gradient(
     180deg,
-    rgba(14, 8, 10, 0.92),
-    rgba(5, 5, 5, 0.88)
+    rgba(9, 6, 7, 0.97),
+    rgba(13, 9, 10, 0.95)
   );
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--cc-card-border);
-  box-shadow: 0 1px 0 rgba(215, 38, 56, 0.08);
+  box-shadow: 0 1px 0 rgba(215, 38, 56, 0.10);
   position: sticky;
   top: 0;
   z-index: 20;
@@ -38,9 +38,9 @@
     var(--cc-purple),
     var(--cc-cyan)
   );
-  opacity: 0.6;
+  opacity: 0.7;
   box-shadow:
-    0 0 12px rgba(215, 38, 56, 0.35),
+    0 0 12px rgba(255, 46, 85, 0.40),
     0 0 20px rgba(154, 0, 255, 0.25);
   pointer-events: none;
 }
@@ -87,6 +87,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
+  text-decoration: none;
 }
 .cc-nav-item:hover {
   color: var(--cc-silver-light);
@@ -97,13 +98,13 @@
   color: #fff;
   background: linear-gradient(
     135deg,
-    rgba(215, 38, 56, 0.28),
-    rgba(154, 0, 255, 0.14)
+    rgba(255, 46, 85, 0.22),
+    rgba(154, 0, 255, 0.12)
   );
-  border-color: rgba(215, 38, 56, 0.55);
+  border-color: rgba(255, 46, 85, 0.55);
   box-shadow:
-    0 0 18px rgba(215, 38, 56, 0.22),
-    0 0 36px rgba(154, 0, 255, 0.14);
+    0 0 18px rgba(255, 46, 85, 0.25),
+    0 0 36px rgba(154, 0, 255, 0.15);
 }
 
 
@@ -133,8 +134,8 @@
   flex-shrink: 0;
 }
 .cc-menu-toggle:hover {
-  border-color: var(--cc-purple);
-  color: var(--cc-purple);
+  border-color: var(--cc-teal);
+  color: var(--cc-teal);
 }
 
 /* Mobile menu panel — sized to its own content (header + links + CTA),
@@ -201,16 +202,17 @@
   padding: 0;
   text-align: left;
   width: 100%;
+  text-decoration: none;
 }
 .cc-nav-mobile-item svg {
   color: var(--cc-silver-border);
   flex-shrink: 0;
 }
 .cc-nav-mobile-item-active {
-  color: var(--cc-red-neon);
+  color: var(--cc-gold-neon);
 }
 .cc-nav-mobile-item-active svg {
-  color: var(--cc-red-neon);
+  color: var(--cc-gold-neon);
 }
 
 .cc-mobile-overlay-cta {
@@ -252,13 +254,13 @@
     z-index: 100;
     background: linear-gradient(
       180deg,
-      rgba(10, 6, 8, 0.98),
-      rgba(5, 5, 5, 0.99)
+      rgba(9, 6, 7, 0.99),
+      rgba(13, 9, 10, 0.99)
     );
     backdrop-filter: blur(14px);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(154, 0, 255, 0.08);
     animation: cc-overlay-in 0.18s ease;
   }
 
@@ -290,9 +292,9 @@
   padding: 7px clamp(16px, 4vw, 28px);
   background: linear-gradient(
     90deg,
-    rgba(215, 38, 56, 0.07),
-    rgba(5, 5, 5, 0.97) 35%,
-    rgba(5, 5, 5, 0.97) 65%,
+    rgba(255, 46, 85, 0.07),
+    rgba(9, 6, 7, 0.97) 35%,
+    rgba(9, 6, 7, 0.97) 65%,
     rgba(0, 232, 255, 0.06)
   );
   border-bottom: 1px solid var(--cc-card-border);
@@ -522,7 +524,7 @@
    Right: Balance heading + metric grid + Pool Bonus / Rank Bonus / Wallet row. */
 .cc-dash-layout {
   display: grid;
-  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 460px) minmax(0, 1fr);
   gap: 20px;
   align-items: start;
   width: 100%;
@@ -1116,4 +1118,201 @@
   .cc-contract-row {
     padding: 8px 10px;
   }
+}
+
+/* ---------------- Withdraw Page ---------------- */
+.cc-withdraw-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.cc-withdraw-form-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cc-withdraw-balance-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cc-withdraw-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0,201,177,0.15), rgba(154,0,255,0.1));
+  border: 1px solid var(--cc-card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cc-cyan);
+  flex-shrink: 0;
+}
+
+.cc-withdraw-balance {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 2px;
+}
+
+.cc-withdraw-divider {
+  height: 1px;
+  background: var(--cc-card-border);
+}
+
+.cc-withdraw-field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cc-withdraw-input-row {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--cc-card-border);
+  border-radius: var(--cc-radius-control);
+  overflow: hidden;
+}
+
+.cc-withdraw-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 10px 12px;
+  color: var(--cc-silver-light);
+  font-family: var(--cc-font-mono);
+  font-size: 14px;
+}
+
+.cc-withdraw-input::placeholder {
+  color: var(--cc-silver-border);
+}
+
+.cc-withdraw-max {
+  background: transparent;
+  border: none;
+  border-left: 1px solid var(--cc-card-border);
+  padding: 10px 14px;
+  color: var(--cc-cyan);
+  font-family: var(--cc-font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.cc-withdraw-max:hover {
+  background: rgba(0,232,212,0.08);
+}
+
+.cc-withdraw-history-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 260px;
+}
+
+.cc-withdraw-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cc-withdraw-date {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--cc-card-border);
+  border-radius: var(--cc-radius-control);
+  padding: 8px 12px;
+  color: var(--cc-silver-light);
+  font-family: var(--cc-font-mono);
+  font-size: 13px;
+  outline: none;
+  color-scheme: dark;
+}
+
+.cc-withdraw-pagination {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .cc-withdraw-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------- Toast ---------------- */
+.cc-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: var(--cc-radius-control);
+  font-family: var(--cc-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  animation: cc-toast-in 0.2s ease;
+}
+.cc-toast-success {
+  background: linear-gradient(135deg, rgba(0,197,126,0.18), rgba(0,232,212,0.10));
+  border: 1px solid rgba(0,197,126,0.4);
+  color: var(--cc-jackpot);
+}
+.cc-toast-error {
+  background: linear-gradient(135deg, rgba(255,46,85,0.18), rgba(154,0,255,0.10));
+  border: 1px solid rgba(255,46,85,0.4);
+  color: #ff6b8a;
+}
+@keyframes cc-toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------- Wallet connected state ---------------- */
+.cc-wallet-connected-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cc-wallet-addr {
+  font-size: 12px;
+  color: var(--cc-cyan);
+  background: rgba(0,232,212,0.08);
+  border: 1px solid rgba(0,232,212,0.2);
+  border-radius: var(--cc-radius-control);
+  padding: 6px 10px;
+}
+.cc-btn-danger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--cc-radius-control);
+  border: 1px solid rgba(255,46,85,0.4);
+  background: rgba(255,46,85,0.12);
+  color: #ff6b8a;
+  font-family: var(--cc-font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.cc-btn-danger:hover {
+  background: rgba(255,46,85,0.22);
+  border-color: rgba(255,46,85,0.6);
 }
