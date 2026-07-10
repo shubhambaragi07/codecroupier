@@ -24,12 +24,12 @@ export default function DashboardPage() {
   const navigate = useNavigate();
   const {
     address, bnbBalance, cchipBalance,
-    farmingBonus, directReferralBonus, passiveBonus, totalWithdrawal,
-    totalFarming, activeFarming, totalBonuses, roiPerSecond,
+    DepositsBonus, directReferralBonus, passiveBonus, totalWithdrawal,
+    totalDeposits, activeDeposits, totalBonuses, roiPerSecond,
     poolBonus, todayPoolBonus, rankBonus, currentRank,
     tsdtBalance, referrals, downlineActive,
   } = useWallet();
-  const [topFarmingOpen, setTopFarmingOpen] = useState(true);
+  const [topDepositsOpen, setTopDepositsOpen] = useState(true);
   const [rankOpen, setRankOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -46,7 +46,7 @@ export default function DashboardPage() {
       <HeroBanner/>
 
       <div className="cc-dash-layout">
-        {/* Left column: Overview + Farming, stacked */}
+        {/* Left column: Overview + Deposits, stacked */}
         <div className="cc-dash-left">
           <Card glow="red" className="cc-overview">
             <div className="cc-overview-head">
@@ -66,17 +66,17 @@ export default function DashboardPage() {
             )}
             <div className="cc-overview-stats">
               <div>
-                <span className="cc-label">Farming Bonus / month</span>
+                <span className="cc-label">Deposits Bonus / month</span>
                 <span className="cc-mono cc-accent-green">8%</span>
               </div>
               <div>
-                <span className="cc-label">Farming Duration</span>
+                <span className="cc-label">Deposits Duration</span>
                 <span className="cc-mono">750 Days</span>
               </div>
             </div>
             <p className="cc-note">
-              Farming only in multiples of 100. Maximum 1,00,000 tokens per
-              transaction. Farming is disabled once earnings reach 2X.
+              Deposits only in multiples of 100. Maximum 1,00,000 tokens per
+              transaction. Deposits is disabled once earnings reach 2X.
             </p>
             <div className="cc-contract-row">
               <span className="cc-label">Contract</span>
@@ -94,29 +94,29 @@ export default function DashboardPage() {
             </div>
           </Card>
 
-          <Card className="cc-farming-panel">
-            <h3 className="cc-card-title">Farming</h3>
+          <Card className="cc-Deposits-panel">
+            <h3 className="cc-card-title">Deposits</h3>
             <div className="cc-kv-row">
-              <span>Total Farming</span>
-              <span className="cc-mono">{totalFarming} PV</span>
+              <span>Total Deposits</span>
+              <span className="cc-mono">{totalDeposits} PV</span>
             </div>
             <div className="cc-kv-row">
-              <span>Total Active Farming</span>
-              <span className="cc-mono">{activeFarming} PV</span>
+              <span>Total Active Deposits</span>
+              <span className="cc-mono">{activeDeposits} PV</span>
             </div>
             <div className="cc-kv-row">
               <span>Total Bonuses</span>
               <span className="cc-mono">{totalBonuses} PV</span>
             </div>
             <div className="cc-kv-row">
-              <span>Farming ROI / Second</span>
+              <span>Deposits ROI / Second</span>
               <span className="cc-mono cc-accent-green">{roiPerSecond} PV</span>
             </div>
             <SecondaryButton>Claim ROI</SecondaryButton>
           </Card>
         </div>
 
-        {/* Right column: Balance grid + Pool Bonus / Rank Bonus / Wallet row */}
+        {/* Right column: Balance grid + Reward Bonus  / Level Income / Wallet row */}
         <div className="cc-dash-right">
           <div className="cc-balance-heading-wrap">
             <h2 className="cc-balance-heading">Balance</h2>
@@ -124,7 +124,7 @@ export default function DashboardPage() {
           <div className="cc-grid-3">
             <MetricCard icon={<Wallet size={18} />} label="Wallet Balance (CCHIP)" value={`${cchipBalance} CCHIP`} accent="silver" />
             <MetricCard icon={<Wallet size={18} />} label="Wallet Balance (BNB)" value={`${bnbBalance} BNB`} accent="silver" />
-            <MetricCard icon={<Layers size={18} />} label="Total Farming Bonus" value={`${farmingBonus} CCHIP`} accent="cyan" to="/transactions" />
+            <MetricCard icon={<Layers size={18} />} label="Total Deposits Bonus" value={`${DepositsBonus} CCHIP`} accent="cyan" to="/transactions" />
             <MetricCard icon={<UserCircle2 size={18} />} label="Total Direct Referral Bonus" value={`${directReferralBonus} CCHIP`} accent="purple" />
             <MetricCard icon={<Waves size={18} />} label="Passive Bonus" value={`${passiveBonus} CCHIP`} accent="purple" />
             <MetricCard icon={<ArrowDownToLine size={18} />} label="Total Withdrawal" value={`${totalWithdrawal} CCHIP`} accent="pink" to="/transactions" />
@@ -132,22 +132,22 @@ export default function DashboardPage() {
 
           <div className="cc-dash-bottom-row">
             <Card className="cc-pool-panel">
-              <h3 className="cc-card-title">Pool Bonus</h3>
+              <h3 className="cc-card-title">Reward Bonus </h3>
               <div className="cc-kv-row">
-                <span>Total Pool Bonus</span>
+                <span>Total Reward Bonus </span>
                 <span className="cc-mono">{poolBonus} CCHIP</span>
               </div>
               <div className="cc-kv-row">
-                <span>Today's Pool Bonus</span>
+                <span>Today's Reward Bonus </span>
                 <span className="cc-mono">{todayPoolBonus} CCHIP</span>
               </div>
-              <p className="cc-note">Pool Bonus is credited daily at 12:00 AM UTC.</p>
+              <p className="cc-note">Reward Bonus  is credited daily at 12:00 AM UTC.</p>
             </Card>
 
             <Card className="cc-rank-panel">
-              <h3 className="cc-card-title">Rank Bonus</h3>
+              <h3 className="cc-card-title">Level Income</h3>
               <div className="cc-kv-row">
-                <span>Total Rank Bonus</span>
+                <span>Total Level Income</span>
                 <span className="cc-mono">{rankBonus} CCHIP</span>
               </div>
               <div className="cc-kv-row">
@@ -174,18 +174,18 @@ export default function DashboardPage() {
       <Card className="cc-collapsible">
         <button
           className="cc-collapsible-head"
-          onClick={() => setTopFarmingOpen((v) => !v)} 
+          onClick={() => setTopDepositsOpen((v) => !v)} 
         >
           <ChevronDown
             size={16}
             style={{
-              transform: topFarmingOpen ? "rotate(0deg)" : "rotate(-90deg)",
+              transform: topDepositsOpen ? "rotate(0deg)" : "rotate(-90deg)",
               transition: "transform .15s ease",
             }}
           />
-          Today&apos;s Top 5 Farming
+          Today&apos;s Top 5 Deposits
         </button>
-        {topFarmingOpen && (
+        {topDepositsOpen && (
           <div className="cc-collapsible-body cc-ticker-row">
             <span>
               Today Rewards: <b className="cc-mono cc-accent-green">16.50 CCHIP</b>
@@ -202,7 +202,7 @@ export default function DashboardPage() {
         <span>Referrals</span>
         <ChevronRight size={16} />
         <span className="cc-mono">{referrals}</span>
-        <span className="cc-referral-label">Downline Total Active Farming (CCHIP)</span>
+        <span className="cc-referral-label">Downline Total Active Deposits (CCHIP)</span>
         <ChevronRight size={16} />
         <span className="cc-mono">{downlineActive} CCHIP</span>
       </Card>
@@ -216,7 +216,7 @@ export default function DashboardPage() {
               transition: "transform .15s ease",
             }}
           />
-          Rank Bonus
+          Level Income
         </button>
         {rankOpen && (
           <div className="cc-collapsible-body">

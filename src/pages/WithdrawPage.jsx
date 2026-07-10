@@ -13,7 +13,7 @@ const WITHDRAW_TABS = [
 
 export default function WithdrawPage() {
   // NOTE: assuming WalletContext also exposes `rewardBalance` (the combined
-  // farming / referral / pool / rank bonus total). Rename this if your
+  // Deposits / referral / pool / Level Income total). Rename this if your
   // context uses a different key.
   const { cchipBalance, rewardBalance } = useWallet();
 
@@ -87,7 +87,7 @@ export default function WithdrawPage() {
 
           <p className="cc-note">
             {isReward
-              ? "Reward withdrawals combine your farming, referral, pool and rank bonuses. Minimum withdrawal is 10 CCHIP. Fees are paid by the user."
+              ? "Reward withdrawals combine your Deposits, referral, pool and Level Incomees. Minimum withdrawal is 10 CCHIP. Fees are paid by the user."
               : "Minimum withdrawal is 10 CCHIP. Fees are paid by the user."}
           </p>
         </Card>

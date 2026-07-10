@@ -17,12 +17,12 @@ export function WalletProvider({ children }) {
   const [toast, setToast]           = useState(null); // { msg, type: 'success'|'error' }
 
   // Dummy data — replace with real contract calls
-  const [farmingBonus, setFarmingBonus]         = useState("1,240.5000");
+  const [DepositsBonus, setDepositsBonus]         = useState("1,240.5000");
   const [directReferralBonus, setDirectReferralBonus] = useState("320.0000");
   const [passiveBonus, setPassiveBonus]         = useState("85.2500");
   const [totalWithdrawal, setTotalWithdrawal]   = useState("500.0000");
-  const [totalFarming, setTotalFarming]         = useState("10,000.0000");
-  const [activeFarming, setActiveFarming]       = useState("8,500.0000");
+  const [totalDeposits, setTotalDeposits]         = useState("10,000.0000");
+  const [activeDeposits, setActiveDeposits]       = useState("8,500.0000");
   const [totalBonuses, setTotalBonuses]         = useState("1,645.7500");
   const [roiPerSecond, setRoiPerSecond]         = useState("0.00003858");
   const [poolBonus, setPoolBonus]               = useState("200.0000");
@@ -94,8 +94,8 @@ export function WalletProvider({ children }) {
   return (
     <WalletContext.Provider value={{
       address, bnbBalance, cchipBalance, connecting, connect, disconnect, toast,
-      farmingBonus, directReferralBonus, passiveBonus, totalWithdrawal,
-      totalFarming, activeFarming, totalBonuses, roiPerSecond,
+      DepositsBonus, directReferralBonus, passiveBonus, totalWithdrawal,
+      totalDeposits, activeDeposits, totalBonuses, roiPerSecond,
       poolBonus, todayPoolBonus, rankBonus, currentRank,
       tsdtBalance, referrals, downlineActive,
     }}>
