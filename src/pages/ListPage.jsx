@@ -5,7 +5,7 @@ import Pagination from "../components/common/Pagination.jsx";
 import EmptyState from "../components/common/EmptyState.jsx";
 
 /**
- * Generic "search + list" page template shared by Farming, Direct Earned,
+ * Generic "search + list" page template shared by Deposits, Direct Earned,
  * Passive Bonus, and Transactions so their layout stays perfectly consistent.
  */
 export default function ListPage({ title, sub, emptyText, rows, setRows, summary }) {

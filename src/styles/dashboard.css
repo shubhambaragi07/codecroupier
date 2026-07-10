@@ -519,9 +519,9 @@
 }
 
 /* ---------------- Dashboard split layout ---------------- */
-/* Left: Overview + Farming, stacked, fluid sidebar column that shrinks
+/* Left: Overview + Deposits, stacked, fluid sidebar column that shrinks
    gracefully instead of a hard-coded fixed width.
-   Right: Balance heading + metric grid + Pool Bonus / Rank Bonus / Wallet row. */
+   Right: Balance heading + metric grid + Reward Bonus / Level Income / Wallet row. */
 .cc-dash-layout {
   display: grid;
   grid-template-columns: minmax(280px, 460px) minmax(0, 1fr);
@@ -581,7 +581,7 @@
   overflow-wrap: anywhere;
 }
 
-/* Bottom row: Pool Bonus / Rank Bonus / Wallet — three equal columns */
+/* Bottom row: Reward Bonus / Level Income / Wallet — three equal columns */
 .cc-dash-bottom-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
