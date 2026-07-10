@@ -6,7 +6,7 @@ export default function PassiveBonusPage() {
   const [rows, setRows] = useState("50");
   return (
     <ListPage
-      title="Passive Bonus"
+      title="Level Income"
       sub="Passive income generated across your downline network."
       emptyText="No passive bonus records found for the selected range."
       rows={rows}

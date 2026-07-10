@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 
 export const NAV_ITEMS = [
-  { key: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { key: "farming", label: "Farming", icon: Layers },
-  { key: "direct", label: "Direct Earned", icon: UserCircle2 },
-  { key: "passive", label: "Passive Bonus", icon: Waves },
-  { key: "teams", label: "Teams", icon: Users2 },
-  { key: "transactions", label: "Transactions", icon: Receipt },
+  { key: "dashboard",    label: "Dashboard",    icon: LayoutDashboard, path: "/" },
+  { key: "farming",      label: "Deposits",      icon: Layers,          path: "/deposits" },
+  { key: "direct",       label: "Direct Earned", icon: UserCircle2,     path: "/direct-earned" },
+  { key: "passive",      label: "Level Income",  icon: Waves,           path: "/level-income" },
+  { key: "teams",        label: "Teams",         icon: Users2,          path: "/teams" },
+  { key: "transactions", label: "Transactions",  icon: Receipt,         path: "/transactions" },
 ];
 
 export const TX_TABS = [

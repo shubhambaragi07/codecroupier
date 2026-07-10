@@ -5,8 +5,8 @@ export default function FarmingPage() {
   const [rows, setRows] = useState("50");
   return (
     <ListPage
-      title="C-Chip Farming Pool"
-      sub="Farm CCHIP and earn daily, credited directly to your wallet."
+      title="C-Chip Deposits Pool"
+      sub="Deposit CCHIP and earn daily, credited directly to your wallet."
       emptyText="No farming records found for the selected range."
       rows={rows}
       setRows={setRows}

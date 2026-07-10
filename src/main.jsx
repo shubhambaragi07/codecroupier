@@ -1,11 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
+import { WalletProvider } from "./context/WalletContext.jsx";
 import "./styles/theme.css";
 import "./styles/dashboard.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <WalletProvider>
+        <App />
+      </WalletProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useWallet } from "../context/WalletContext.jsx";
 import {
   Wallet,
   Layers,
@@ -16,14 +18,32 @@ import MetricCard from "../components/common/MetricCard.jsx";
 import SectionTitle from "../components/common/SectionTitle.jsx";
 import EmptyState from "../components/common/EmptyState.jsx";
 import { PrimaryButton, SecondaryButton } from "../components/common/Buttons.jsx";
+import HeroBanner from "./HeroBanner.jsx";
 
 export default function DashboardPage() {
+  const navigate = useNavigate();
+  const {
+    address, bnbBalance, cchipBalance,
+    farmingBonus, directReferralBonus, passiveBonus, totalWithdrawal,
+    totalFarming, activeFarming, totalBonuses, roiPerSecond,
+    poolBonus, todayPoolBonus, rankBonus, currentRank,
+    tsdtBalance, referrals, downlineActive,
+  } = useWallet();
   const [topFarmingOpen, setTopFarmingOpen] = useState(true);
   const [rankOpen, setRankOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const CONTRACT = "0x8402b160dE808c69ec2a8e0296b160dE808c69ec";
+  const handleCopy = () => {
+    navigator.clipboard.writeText(CONTRACT);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  };
 
   return (
     <div className="cc-page">
       <SectionTitle>Dashboard</SectionTitle>
+      <HeroBanner/>
 
       <div className="cc-dash-layout">
         {/* Left column: Overview + Farming, stacked */}
@@ -36,6 +56,14 @@ export default function DashboardPage() {
               </div>
               <div className="cc-overview-price">N/A</div>
             </div>
+            {address && (
+              <div className="cc-kv-row" style={{marginBottom: 4}}>
+                <span className="cc-label">Connected Wallet</span>
+                <span className="cc-mono" style={{fontSize:12,color:"var(--cc-cyan)"}}>
+                  {address.slice(0,8)}...{address.slice(-6)}
+                </span>
+              </div>
+            )}
             <div className="cc-overview-stats">
               <div>
                 <span className="cc-label">Farming Bonus / month</span>
@@ -53,14 +81,16 @@ export default function DashboardPage() {
             <div className="cc-contract-row">
               <span className="cc-label">Contract</span>
               <span className="cc-mono cc-contract-addr">
-                0x8402b160dE808c69ec2a8e0296...
+                {CONTRACT.slice(0, 26)}...
               </span>
-              <button className="cc-icon-btn" aria-label="Copy contract address">
+              <button className="cc-icon-btn" aria-label="Copy" onClick={handleCopy}>
                 <Copy size={14} />
               </button>
-              <button className="cc-icon-btn" aria-label="View on explorer">
+              <button className="cc-icon-btn" aria-label="Explorer"
+                onClick={() => window.open(`https://bscscan.com/address/${CONTRACT}`, "_blank")}>
                 <ExternalLink size={14} />
               </button>
+              {copied && <span style={{fontSize:11,color:"var(--cc-cyan)"}}>Copied!</span>}
             </div>
           </Card>
 
@@ -68,19 +98,19 @@ export default function DashboardPage() {
             <h3 className="cc-card-title">Farming</h3>
             <div className="cc-kv-row">
               <span>Total Farming</span>
-              <span className="cc-mono">0.0000 PV</span>
+              <span className="cc-mono">{totalFarming} PV</span>
             </div>
             <div className="cc-kv-row">
               <span>Total Active Farming</span>
-              <span className="cc-mono">0.0000 PV</span>
+              <span className="cc-mono">{activeFarming} PV</span>
             </div>
             <div className="cc-kv-row">
               <span>Total Bonuses</span>
-              <span className="cc-mono">0 PV</span>
+              <span className="cc-mono">{totalBonuses} PV</span>
             </div>
             <div className="cc-kv-row">
               <span>Farming ROI / Second</span>
-              <span className="cc-mono cc-accent-green">0.00000000 PV</span>
+              <span className="cc-mono cc-accent-green">{roiPerSecond} PV</span>
             </div>
             <SecondaryButton>Claim ROI</SecondaryButton>
           </Card>
@@ -92,12 +122,12 @@ export default function DashboardPage() {
             <h2 className="cc-balance-heading">Balance</h2>
           </div>
           <div className="cc-grid-3">
-            <MetricCard icon={<Wallet size={18} />} label="Wallet Balance (CCHIP)" value="0 CCHIP" accent="silver" />
-            <MetricCard icon={<Wallet size={18} />} label="Wallet Balance (BNB)" value="0 BNB" accent="silver" />
-            <MetricCard icon={<Layers size={18} />} label="Total Farming Bonus" value="0 CCHIP" accent="cyan" />
-            <MetricCard icon={<UserCircle2 size={18} />} label="Total Direct Referral Bonus" value="0 CCHIP" accent="purple" />
-            <MetricCard icon={<Waves size={18} />} label="Passive Bonus" value="0 CCHIP" accent="purple" />
-            <MetricCard icon={<ArrowDownToLine size={18} />} label="Total Withdrawal" value="0 CCHIP" accent="pink" />
+            <MetricCard icon={<Wallet size={18} />} label="Wallet Balance (CCHIP)" value={`${cchipBalance} CCHIP`} accent="silver" />
+            <MetricCard icon={<Wallet size={18} />} label="Wallet Balance (BNB)" value={`${bnbBalance} BNB`} accent="silver" />
+            <MetricCard icon={<Layers size={18} />} label="Total Farming Bonus" value={`${farmingBonus} CCHIP`} accent="cyan" to="/transactions" />
+            <MetricCard icon={<UserCircle2 size={18} />} label="Total Direct Referral Bonus" value={`${directReferralBonus} CCHIP`} accent="purple" />
+            <MetricCard icon={<Waves size={18} />} label="Passive Bonus" value={`${passiveBonus} CCHIP`} accent="purple" />
+            <MetricCard icon={<ArrowDownToLine size={18} />} label="Total Withdrawal" value={`${totalWithdrawal} CCHIP`} accent="pink" to="/transactions" />
           </div>
 
           <div className="cc-dash-bottom-row">
@@ -105,11 +135,11 @@ export default function DashboardPage() {
               <h3 className="cc-card-title">Pool Bonus</h3>
               <div className="cc-kv-row">
                 <span>Total Pool Bonus</span>
-                <span className="cc-mono">0 CCHIP</span>
+                <span className="cc-mono">{poolBonus} CCHIP</span>
               </div>
               <div className="cc-kv-row">
                 <span>Today's Pool Bonus</span>
-                <span className="cc-mono">0.00 CCHIP</span>
+                <span className="cc-mono">{todayPoolBonus} CCHIP</span>
               </div>
               <p className="cc-note">Pool Bonus is credited daily at 12:00 AM UTC.</p>
             </Card>
@@ -118,18 +148,18 @@ export default function DashboardPage() {
               <h3 className="cc-card-title">Rank Bonus</h3>
               <div className="cc-kv-row">
                 <span>Total Rank Bonus</span>
-                <span className="cc-mono">0 CCHIP</span>
+                <span className="cc-mono">{rankBonus} CCHIP</span>
               </div>
               <div className="cc-kv-row">
                 <span>Current Rank</span>
-                <span className="cc-mono cc-accent-purple">No Rank</span>
+                <span className="cc-mono cc-accent-purple">{currentRank}</span>
               </div>
             </Card>
 
             <Card glow="purple" className="cc-wallet-card">
               <div className="cc-label">TSDT Wallet Balance</div>
-              <div className="cc-wallet-balance cc-mono">0.0000 CCHIP</div>
-              <PrimaryButton full>
+              <div className="cc-wallet-balance cc-mono">{tsdtBalance} CCHIP</div>
+              <PrimaryButton full onClick={() => navigate("/withdraw")}>
                 <ArrowDownToLine size={16} /> Withdraw
               </PrimaryButton>
               <p className="cc-note">
@@ -140,11 +170,11 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-
+{/* 
       <Card className="cc-collapsible">
         <button
           className="cc-collapsible-head"
-          onClick={() => setTopFarmingOpen((v) => !v)}
+          onClick={() => setTopFarmingOpen((v) => !v)} 
         >
           <ChevronDown
             size={16}
@@ -166,17 +196,17 @@ export default function DashboardPage() {
             </span>
           </div>
         )}
-      </Card>
+      </Card> */}
 
       <Card className="cc-referral-bar">
         <span>Referrals</span>
         <ChevronRight size={16} />
-        <span className="cc-mono">0</span>
+        <span className="cc-mono">{referrals}</span>
         <span className="cc-referral-label">Downline Total Active Farming (CCHIP)</span>
         <ChevronRight size={16} />
-        <span className="cc-mono">0 CCHIP</span>
+        <span className="cc-mono">{downlineActive} CCHIP</span>
       </Card>
-
+{/* 
       <Card className="cc-collapsible">
         <button className="cc-collapsible-head" onClick={() => setRankOpen((v) => !v)}>
           <ChevronDown
@@ -193,7 +223,7 @@ export default function DashboardPage() {
             <EmptyState text="No rank data available yet." />
           </div>
         )}
-      </Card>
+      </Card> */}
     </div>
   );
 }
