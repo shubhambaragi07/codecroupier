@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: clamp(16px, 2.5vw, 28px) clamp(24px, 5vw, 48px);
+  padding: clamp(12px, 2vw, 22px) clamp(20px, 4vw, 40px);
   border-radius: var(--cc-radius-card);
   background: linear-gradient(
     135deg,
@@ -109,8 +109,8 @@
 }
 
 .cc-hero-img {
-  width: clamp(240px, 30vw, 370px);
-  height: clamp(240px, 30vw, 370px);
+  width: clamp(180px, 22vw, 280px);
+  height: clamp(180px, 22vw, 280px);
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -125,8 +125,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(280px, 36vw, 430px);
-  height: clamp(280px, 36vw, 430px);
+  width: clamp(210px, 27vw, 330px);
+  height: clamp(210px, 27vw, 330px);
 }
 
 /* Pulsing glow behind image */

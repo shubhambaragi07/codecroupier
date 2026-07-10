@@ -12,7 +12,16 @@ export default function HeroBanner({ onStartDeposits }) {
             <div className="cc-ring cc-ring-1" />
             <div className="cc-ring cc-ring-2" />
             <div className="cc-ring cc-ring-3" />
-            <img src={heroImg} alt="C-Chip Hero" className="cc-hero-img" />
+            <img
+              src={heroImg}
+              alt="C-Chip Hero"
+              className="cc-hero-img"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="high"
+              width="280"
+              height="280"
+            />
           </div>
         </div>
 
