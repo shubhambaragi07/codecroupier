@@ -16,8 +16,8 @@ export default function HeroBanner({ onStartDeposits }) {
               src={heroImg}
               alt="C-Chip Hero"
               className="cc-hero-img"
-              loading="lazy"
-              decoding="async"
+              loading="eager"
+              decoding="sync"
               fetchpriority="high"
               width="280"
               height="280"
