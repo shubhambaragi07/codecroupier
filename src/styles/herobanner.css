@@ -109,8 +109,8 @@
 }
 
 .cc-hero-img {
-  width: clamp(180px, 22vw, 280px);
-  height: clamp(180px, 22vw, 280px);
+  width: clamp(160px, 20vw, 250px);
+  height: clamp(160px, 20vw, 250px);
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -118,6 +118,7 @@
   z-index: 2;
   border: 3px solid rgba(212, 175, 55, 0.6);
   box-shadow: 0 0 32px rgba(212, 175, 55, 0.5), 0 0 64px rgba(212, 175, 55, 0.2);
+  will-change: auto;
 }
 
 .cc-hero-img-ring {
@@ -125,8 +126,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(210px, 27vw, 330px);
-  height: clamp(210px, 27vw, 330px);
+  width: clamp(190px, 24vw, 300px);
+  height: clamp(190px, 24vw, 300px);
+  contain: layout style;
 }
 
 /* Pulsing glow behind image */
